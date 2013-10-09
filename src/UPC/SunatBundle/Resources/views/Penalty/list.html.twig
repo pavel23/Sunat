@@ -1,0 +1,75 @@
+{% extends "UPCSunatBundle::layout.html.twig" %}
+{% block body %}
+<div class="container">
+    {% include 'UPCSunatBundle:Includes:header.html.twig' %}
+    <div class="jumbotron">
+    
+    
+    
+    <div id="tabContenido" class="tab-content">
+    <div class="tab-pane fade active in" id="new">
+    <div class="modal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Consultar Multas - Sunat</h3>
+        </div>
+        <div class="modal-body">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+            <div class="row-fluid">
+                <div class="span1">
+                    {{ form_label(form.ruc) }}                    
+                </div>
+                <div class="span3">
+                    {{ form_errors(form.ruc) }}
+                    {{ form_widget(form.ruc) }}
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span1">
+                    {{ form_widget(form.search) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+            <br>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ruc</th>
+                        <th>Tipo de Pago</th>
+                        <th>Periodo</th>
+                        <th>Resolucion</th>
+                        <th>Cod.Tributo</th>
+                        <th>Importe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in pagination %}
+                    <tr {% if loop.index is odd %}class="info"{% endif %}>
+                        <td>{{ item.ruc }}</td>
+                        <td>{{ item.typePayment }}</td>
+                        <td>{{ item.tributaryPeriod | date("d/m/Y") }}</td>
+                        <td>{{ item.resolution }}</td>
+                        <td>{{ item.tributeCode }}</td>
+                        <td>{{ item.payment }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+            <div class="modal-footer">
+                <a href="#" class="btn">Cerrar</a>
+            </div>            
+        </div>
+    </div>
+</div>
+    
+    
+    
+    </div>
+{% include 'UPCSunatBundle:Includes:footer.html.twig' %}
+</div>
+{% endblock %}

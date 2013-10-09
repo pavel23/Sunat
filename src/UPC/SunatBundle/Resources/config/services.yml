@@ -1,0 +1,8 @@
+parameters:
+#    upc_sunat.example.class: UPC\SunatBundle\Example
+
+services:
+    sunat_crud.form.penalty_search:
+        class: Upc\SunatBundle\Form\PenaltySearchType
+        tags:
+            - { name: form.type, alias: penalty_search }

@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Penalty</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Ruc</th>
+                <td>{{ entity.ruc }}</td>
+            </tr>
+            <tr>
+                <th>Typepayment</th>
+                <td>{{ entity.typePayment }}</td>
+            </tr>
+            <tr>
+                <th>Tributaryperiod</th>
+                <td>{{ entity.tributaryPeriod|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Resolution</th>
+                <td>{{ entity.resolution }}</td>
+            </tr>
+            <tr>
+                <th>Tributecode</th>
+                <td>{{ entity.tributeCode }}</td>
+            </tr>
+            <tr>
+                <th>Payment</th>
+                <td>{{ entity.payment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('penalty') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('penalty_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

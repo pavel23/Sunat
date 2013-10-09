@@ -1,0 +1,4 @@
+upc_sunat:
+    resource: "@UPCSunatBundle/Resources/config/routing.yml"
+    prefix:   /
+

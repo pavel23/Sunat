@@ -1,0 +1,4 @@
+_sunat_homepage:
+    resource: "@UPCSunatBundle/Controller/PenaltyController.php"
+    type:     annotation
+    prefix:   /
